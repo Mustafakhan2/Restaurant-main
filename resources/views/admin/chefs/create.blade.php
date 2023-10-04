@@ -15,16 +15,16 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">
                                 Speciality</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="What's his Speciality?">
+                            <input type="email" class="form-control" id="speciality" placeholder="What's his Speciality?">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nationality</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="From which country is he?">
+                            <input type="text" class="form-control" id="nationality"
+                                placeholder="From which country is he?">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputConfirmPassword1"
-                                placeholder="Password">
+                            <label for="exampleInputConfirmPassword1">Michelin star</label>
+                            <input type="text" class="form-control" id="michelinstar" placeholder="How many he got?">
                         </div>
                         <div class="form-check form-check-flat form-check-primary">
                             <label class="form-check-label">
