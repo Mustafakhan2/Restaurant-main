@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{{ asset('admin/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
+
 @extends('admin.admindashboard')
 @section('content-Sec')
     <div class="row">
@@ -6,7 +9,8 @@
                 <div class="card-body">
                     <h4 class="card-title">Default form</h4>
                     <p class="card-description"> Basic form layout </p>
-                    <form class="forms-sample" action="{{ route('chefs.store') }}" method="POST" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{ route('chefs.edit', ['id' => $editchef->id]) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Name</label>

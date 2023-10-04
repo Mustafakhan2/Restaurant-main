@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chefs;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ChefsController extends Controller
@@ -33,13 +34,15 @@ class ChefsController extends Controller
             'name' => 'required|string|max:255',
             'speciality' => 'required',
             'nationality' => 'required',
-            'michelinstar' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+        $imageName = time() . 'chef' . $request->image->getClientOriginalExtension();
+        $request->image->move(public_path('uploads'), $imageName);
         $data = new Chefs();
         $data->name = $request["name"];
         $data->speciality = $request["speciality"];
         $data->nationality = $request["nationality"];
-        $data->michelinstar = $request["michelinstar"];
+        $data->image = $imageName;
         $data->save();
         return redirect()->back();
     }
@@ -47,9 +50,10 @@ class ChefsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $data = Chefs::all();
+        return view('admin.chefs.cheftable', compact('data'));
     }
 
     /**
@@ -57,7 +61,9 @@ class ChefsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $editchef = Chefs::find($id);
+        $data = compact(['editchef']);
+        return view('admin.chefs.edit')->with($data);
     }
 
     /**
@@ -65,14 +71,22 @@ class ChefsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Chefs::find($id);
+        $data->name = $request['name'];
+        $data->speciality = $request['speciality'];
+        $data->nationality = $request['nationality'];
+        $data->image = $request['image'];
+        $data->save();
+        return redirect()->route('chefs.show');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $deluser = Chefs::find($id);
+        $deluser->delete();
+        return redirect()->route('chefs.show');
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('speciality');
             $table->string('nationality');
-            $table->string('michelinstar');
+            $table->string('image');
             $table->timestamps('');
         });
     }

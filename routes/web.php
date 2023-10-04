@@ -22,6 +22,10 @@ Route::get('users', [HomeController::class, "userindex"])->name('user.index');
 Route::get('users/{id}', [HomeController::class, "userdelete"])->name('user.delete');
 Route::get('chefs', [ChefsController::class, 'index'])->name('chefs.create');
 Route::post('chefs', [ChefsController::class, 'store'])->name('chefs.store');
+Route::get('/cheftable', [ChefsController::class, "show"])->name('chefs.show');
+Route::get('/chefdelete/{id}', [ChefsController::class, "destroy"])->name('chefs.del');
+Route::get('/cheftable/{id}', [ChefsController::class, 'edit'])->name('chefs.edit');
+Route::post('/cheftable/{id}', [ChefsController::class, 'update']);
 
 
 
