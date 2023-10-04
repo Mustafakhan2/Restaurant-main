@@ -6,32 +6,32 @@
                 <div class="card-body">
                     <h4 class="card-title">Default form</h4>
                     <p class="card-description"> Basic form layout </p>
-                    <form class="forms-sample">
+                    <form class="forms-sample" action="{{ route('chefs.store') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Name</label>
                             <input type="text" class="form-control" id="exampleInputUsername1"
-                                placeholder="Enter the Chefs Name">
+                                placeholder="Enter the Chefs Name" name="name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">
                                 Speciality</label>
-                            <input type="email" class="form-control" id="speciality" placeholder="What's his Speciality?">
+                            <input type="text" class="form-control" id="speciality" placeholder="What's his Speciality?"
+                                name="speciality">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nationality</label>
                             <input type="text" class="form-control" id="nationality"
-                                placeholder="From which country is he?">
+                                placeholder="From which country is he?" name="nationality">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputConfirmPassword1">Michelin star</label>
-                            <input type="text" class="form-control" id="michelinstar" placeholder="How many he got?">
+                            <input type="text" class="form-control" id="michelinstar" placeholder="How many he got?"
+                                name="michelinstar">
                         </div>
-                        <div class="form-check form-check-flat form-check-primary">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input"> Remember me </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary me-2">Submit</button>
-                        <button class="btn btn-dark">Cancel</button>
+
+                        <button type="submit" class="btn btn-primary me-2 mt-1">Submit</button>
+                        <button class="btn btn-dark mt-1">Cancel</button>
                     </form>
                 </div>
             </div>

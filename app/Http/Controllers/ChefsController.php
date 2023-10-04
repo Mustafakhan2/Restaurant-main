@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chefs;
 use Illuminate\Http\Request;
 
 class ChefsController extends Controller
@@ -11,7 +12,7 @@ class ChefsController extends Controller
      */
     public function index()
     {
-     return view('admin.chefs.create');
+        return view('admin.chefs.create');
     }
 
     /**
@@ -27,8 +28,20 @@ class ChefsController extends Controller
      */
     public function store(Request $request)
     {
-      
-        
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'speciality' => 'required',
+            'nationality' => 'required',
+            'michelinstar' => 'required',
+        ]);
+        $data = new Chefs();
+        $data->name = $request["name"];
+        $data->speciality = $request["speciality"];
+        $data->nationality = $request["nationality"];
+        $data->michelinstar = $request["michelinstar"];
+        $data->save();
+        return redirect()->back();
     }
 
     /**

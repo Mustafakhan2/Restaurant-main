@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [HomeController::class,'index']);
-Route::get('/redirect', [HomeController::class,'redirect']);
-Route::get('users',[HomeController::class,"userindex"])->name('user.index');
-Route::get('users/{id}',[HomeController::class,"userdelete"])->name('user.delete');
-Route::get('chefs',[ChefsController::class,'index'])->name('chefs.create');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/redirect', [HomeController::class, 'redirect']);
+Route::get('users', [HomeController::class, "userindex"])->name('user.index');
+Route::get('users/{id}', [HomeController::class, "userdelete"])->name('user.delete');
+Route::get('chefs', [ChefsController::class, 'index'])->name('chefs.create');
+Route::post('chefs', [ChefsController::class, 'store'])->name('chefs.store');
+
 
 
 
