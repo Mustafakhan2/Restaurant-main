@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChefsController;
+use App\Http\Controllers\DishesController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,14 @@ Route::get('/cheftable', [ChefsController::class, "show"])->name('chefs.show');
 Route::get('/chefdelete/{id}', [ChefsController::class, "destroy"])->name('chefs.del');
 Route::get('/cheftable/{id}', [ChefsController::class, 'edit'])->name('chefs.edit');
 Route::post('/cheftable/{id}', [ChefsController::class, 'update']);
+Route::get('/dishes', [DishesController::class, 'index'])->name('dishes.index');
+Route::post('/dishes', [DishesController::class, 'store'])->name('dishes.store');
+Route::get('/dishestable', [DishesController::class, "show"])->name('dishes.show');
+Route::get('/dishesdelete/{id}', [DishesController::class, "destroy"])->name('dishes.del');
+Route::get('/dishestable/{id}', [DishesController::class, 'edit'])->name('dishes.edit');
+Route::post('/dishestable/{id}', [DishesController::class, 'update']);
+
+
 
 
 

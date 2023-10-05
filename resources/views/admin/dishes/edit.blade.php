@@ -7,30 +7,29 @@
         <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Edit the chefs information</h4>
-                    <form class="forms-sample" action="{{ route('chefs.edit', ['id' => $editchef->id]) }}" method="POST"
+                    <h4 class="card-title">Edit the Dishes</h4>
+                    <form class="forms-sample" action="{{ route('dishes.edit', ['id' => $editdish->id]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername1">Name</label>
                             <input type="text" class="form-control" id="exampleInputUsername1"
-                                placeholder="Enter the Chefs Name" name="name">
+                                placeholder="Enter the Dish Name" name="dishname">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">
-                                Speciality</label>
-                            <input type="text" class="form-control" id="speciality" placeholder="What's his Speciality?"
-                                name="speciality">
+                                Image</label>
+                            <input type="file" class="form-control" id="speciality" name="image">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nationality</label>
-                            <input type="text" class="form-control" id="nationality"
-                                placeholder="From which country is he?" name="nationality">
+                            <label for="exampleInputPassword1">Recipe</label>
+                            <input type="text" class="form-control" id="nationality" placeholder="Enter the recipe"
+                                name="recipe">
                         </div>
-                        <div class="col-md-4">
-                            <label for="" class="form-label">Image</label>
-                            <input type="file" name="image" id="file" class="form-control"
-                                placeholder="Select Image" aria-describedby="helpId">
+                        <div class="form-group">
+                            <label for="" class="form-label">Description</label>
+                            <input type="text" name="description" id="file" class="form-control"
+                                placeholder="Enter Description" aria-describedby="helpId">
                             <p class="text-danger">
                                 @error('image')
                                     {{ $message }}

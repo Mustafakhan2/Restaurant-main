@@ -4,8 +4,7 @@
         <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
+                    <h4 class="card-title">Add Chefs</h4>
                     <form class="forms-sample" action="{{ route('chefs.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">

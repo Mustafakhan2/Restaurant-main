@@ -38,7 +38,7 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
-                <span class="menu-title">Chefs</span>
+                <span class="menu-title">Add Chefs</span>
             </a>
         </li>
 
@@ -48,6 +48,24 @@
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
                 <span class="menu-title">Chefs Table</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('dishes.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Add Dishes</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('dishes.show') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Dishes Table</span>
             </a>
         </li>
     </ul>
