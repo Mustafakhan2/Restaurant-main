@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Dishes;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class DishesController extends Controller
      */
     public function index()
     {
-        return view('admin.dishes.create');
+        return view(
+            'admin.dishes.create',
+            ['cat' => Category::all()]
+        );
     }
 
     /**
@@ -43,6 +47,7 @@ class DishesController extends Controller
         $data->image = $imageName;
         $data->recipe = $request["recipe"];
         $data->description = $request["description"];
+        $data->category = $request['selected_option'];
         $data->save();
         return redirect()->back();
     }
@@ -53,7 +58,8 @@ class DishesController extends Controller
     public function show(Request $request)
     {
         $data = Dishes::all();
-        return view('admin.dishes.dishestable', compact('data'));
+        $cat = Category::all();
+        return view('admin.dishes.dishestable', compact('data', 'cat'));
     }
 
     /**

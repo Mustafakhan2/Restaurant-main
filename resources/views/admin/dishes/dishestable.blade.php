@@ -9,16 +9,15 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th> ID</th>
+                                    <th>ID</th>
                                     <th>Dish Name</th>
-                                    <th> Image </th>
+                                    <th>Image</th>
                                     <th>Recipe</th>
-                                    <th>Description </th>
-                                    <th>Created At </th>
-                                    <th>Delete </th>
-                                    <th>Edit </th>
-
-
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Created At</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,20 +28,28 @@
                                         <td>{{ $value->image }}</td>
                                         <td>{{ $value->recipe }}</td>
                                         <td>{{ $value->description }}</td>
+                                        <td>
+                                            {{-- Find the associated category for the dish --}}
+                                            @php
+                                                $category = $cat->where('id', $value->category)->first();
+                                            @endphp
+                                            {{ $category ? $category->category : 'Category not found' }}
+                                        </td>
                                         <td>{{ $value->created_at }}</td>
                                         <td>
                                             <a href="{{ route('dishes.del', ['id' => $value->id]) }}"
                                                 class="btn btn-danger">Delete</a>
                                         </td>
-                                        <td><a href="{{ route('dishes.edit', ['id' => $value->id]) }}"
-                                                class="btn btn-success">Edit</a></td>
-
-
+                                        <td>
+                                            <a href="{{ route('dishes.edit', ['id' => $value->id]) }}"
+                                                class="btn btn-success">Edit</a>
+                                        </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
+
+
                     </div>
                 </div>
             </div>

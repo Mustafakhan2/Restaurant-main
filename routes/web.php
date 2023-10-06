@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChefsController;
 use App\Http\Controllers\DishesController;
 use App\Http\Controllers\HomeController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,17 @@ Route::get('/dishestable', [DishesController::class, "show"])->name('dishes.show
 Route::get('/dishesdelete/{id}', [DishesController::class, "destroy"])->name('dishes.del');
 Route::get('/dishestable/{id}', [DishesController::class, 'edit'])->name('dishes.edit');
 Route::post('/dishestable/{id}', [DishesController::class, 'update']);
+Route::get('/category', [CategoryController::class, "index"])->name('category.index');
+Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/categorytable', [CategoryController::class, "show"])->name('category.show');
+Route::get('/categorydelete/{id}', [CategoryController::class, "destroy"])->name('category.del');
+Route::get('/categorytable/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/categorytable/{id}', [CategoryController::class, 'update']);
+
+
+
+
+
 
 
 
