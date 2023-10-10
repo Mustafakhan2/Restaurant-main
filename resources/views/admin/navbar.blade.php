@@ -86,5 +86,14 @@
                 <span class="menu-title">Category Table</span>
             </a>
         </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('tbres.show') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Reservations</span>
+            </a>
+        </li>
     </ul>
 </nav>

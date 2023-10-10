@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChefsController;
 use App\Http\Controllers\DishesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TableRes;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,12 @@ Route::get('/categorytable', [CategoryController::class, "show"])->name('categor
 Route::get('/categorydelete/{id}', [CategoryController::class, "destroy"])->name('category.del');
 Route::get('/categorytable/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/categorytable/{id}', [CategoryController::class, 'update']);
+Route::post('', [TableRes::class, 'store'])->name('tbres.store');
+Route::get('/restable', [TableRes::class, "show"])->name('tbres.show');
+Route::get('/restable/{id}', [TableRes::class, "destroy"])->name('tbres.del');
+
+
+
 
 
 

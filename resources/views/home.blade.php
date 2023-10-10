@@ -88,24 +88,24 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li>
                                 @if (Route::has('login'))
                                     @auth
-                                    <li>
+                                <li>
                                     <x-app-layout>
-   
+
                                     </x-app-layout>
                                 </li>
-                                    @else
-                                       <li> <a href="{{ route('login') }}"
-                                            class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                                            in</a>
-                                        </li>
-                                        @if (Route::has('register'))
-                                        <li>  
+                            @else
+                                <li> <a href="{{ route('login') }}"
+                                        class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                                        in</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li>
                                         <a href="{{ route('register') }}"
-                                                class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                                            </li>
-                                        @endif
-                                    @endauth
+                                            class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                    </li>
                                 @endif
+                            @endauth
+                            @endif
                             </li>
 
                         </ul>
@@ -182,7 +182,8 @@ https://templatemo.com/tm-558-klassy-cafe
                             CSS framework. You can download and feel free to use this website template layout for your
                             restaurant business. You are allowed to use this template for commercial purposes.
                             <br><br>You are NOT allowed to redistribute the template ZIP file on any template donwnload
-                            website. Please contact us for more information.</p>
+                            website. Please contact us for more information.
+                        </p>
                         <div class="row">
                             <div class="col-4">
                                 <img src="assets/images/about-thumb-01.jpg" alt="">
@@ -428,7 +429,8 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
+                        <form id="contact" method="post" action="{{ route('tbres.store') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h4>Table Reservation</h4>
@@ -438,6 +440,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                         <input name="name" type="text" id="name" placeholder="Your Name*"
                                             required="">
                                     </fieldset>
+
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <fieldset>

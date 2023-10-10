@@ -11,12 +11,14 @@
                                 <tr>
                                     <th> ID</th>
                                     <th> Name</th>
-                                    <th> Speciality </th>
-                                    <th>Nationalityt</th>
-                                    <th>Image </th>
-                                    <th>Created At </th>
+                                    <th> Email </th>
+                                    <th>Phone Number</th>
+                                    <th>Number of Guests </th>
+                                    <th>Date </th>
+                                    <th>Time </th>
+                                    <th>Message </th>
                                     <th>Delete </th>
-                                    <th>Edit </th>
+
 
                                 </tr>
                             </thead>
@@ -25,18 +27,15 @@
                                     <tr>
                                         <td>{{ $value->id }}</td>
                                         <td>{{ $value->name }}</td>
-                                        <td>{{ $value->speciality }}</td>
-                                        <td>{{ $value->nationality }}</td>
-                                        <td><img src="{{ asset('uploads/' . $value->image) }}" alt="Image"></td>
-
-                                        <td>{{ $value->created_at }}</td>
+                                        <td>{{ $value->email }}</td>
+                                        <td>{{ $value->pn }}</td>
+                                        <td>{{ $value->nog }}</td>
+                                        <td>{{ $value->dmy }}</td>
+                                        <td>{{ $value->time }}</td>
+                                        <td>{{ $value->message }}</td>
                                         <td>
-                                            <a href="{{ route('chefs.del', ['id' => $value->id]) }}"
+                                            <a href="{{ route('tbres.del', ['id' => $value->id]) }}"
                                                 class="btn btn-danger">Delete</a>
-                                        </td>
-                                        <td><a href="{{ route('chefs.edit', ['id' => $value->id]) }}"
-                                                class="btn btn-success">Edit</a></td>
-
 
                                     </tr>
                                 @endforeach

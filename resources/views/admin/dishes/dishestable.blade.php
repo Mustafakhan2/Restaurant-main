@@ -25,7 +25,7 @@
                                     <tr>
                                         <td>{{ $value->id }}</td>
                                         <td>{{ $value->name }}</td>
-                                        <td>{{ $value->image }}</td>
+                                        <td><img src="{{ asset('uploads/' . $value->image) }}" alt="Image"></td>
                                         <td>{{ $value->recipe }}</td>
                                         <td>{{ $value->description }}</td>
                                         <td>

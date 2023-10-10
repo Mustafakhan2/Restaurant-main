@@ -36,12 +36,14 @@ class ChefsController extends Controller
             'nationality' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        $imageName = time() . 'chef' . $request->image->getClientOriginalExtension();
+
+        $imageName = time() . 'chef.' . $request->image->getClientOriginalExtension();
         $request->image->move(public_path('uploads'), $imageName);
         $data = new Chefs();
         $data->name = $request["name"];
         $data->speciality = $request["speciality"];
         $data->nationality = $request["nationality"];
+
         $data->image = $imageName;
         $data->save();
         return redirect()->back();
