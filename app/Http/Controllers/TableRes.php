@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TableReservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TableRes extends Controller
 {
@@ -28,35 +29,53 @@ class TableRes extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required',
-            'phone' => 'required',
-            'number-guests' => 'required',
-            'date' => 'required',
-            'time' => 'required',
-            'message' => 'required',
+        // Ensure the user is authenticated
+        if (auth()->check()) {
+            $user = auth()->user();
+            $usertype = $user->usertype;
 
-        ]);
-        $data = new TableReservation();
-        $data->name = $request["name"];
-        $data->email = $request["email"];
-        $data->pn = $request["phone"];
-        $data->nog = $request['number-guests'];
-        $data->dmy = $request['date'];
-        $data->time = $request['time'];
-        $data->message = $request['message'];
-        $data->save();
-        return redirect()->back();
+            // Validate the request data
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email',
+                'phone' => 'required|string',
+                'number-guests' => 'required|integer',
+                'date' => 'required|date',
+                'time' => 'required|string',
+                'message' => 'required|string',
+            ]);
+
+            if ($usertype == "0") {
+                $data = new TableReservation();
+                $data->name = $validatedData["name"];
+                $data->email = $validatedData["email"];
+                $data->pn = $validatedData["phone"];
+                $data->nog = $validatedData['number-guests'];
+                $data->dmy = $validatedData['date'];
+                $data->time = $validatedData['time'];
+                $data->message = $validatedData['message'];
+                $data->save();
+
+                return redirect()->back();
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            // Handle the case where the user is not authenticated
+            return redirect()->back();
+        }
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Request $request)
     {
-        $data = TableReservation::all();
+        $data = TableReservation::where('status', 'pending')->get();
+
         return view('admin.reservations.restable', compact('data'));
+        return redirect()->back();
     }
 
     /**
@@ -83,5 +102,19 @@ class TableRes extends Controller
         $deluser = TableReservation::find($id);
         $deluser->delete();
         return redirect()->route('tbres.show');
+    }
+    public function accept(string $id)
+    {
+        $res = TableReservation::find($id);
+        $res->status = "done";
+        $res->save();
+        return redirect()->back();
+    }
+    public function showres(Request $request)
+    {
+        $reservation = TableReservation::where('status', 'done')->get();
+
+        return view('admin.reservations.accrestbl', compact('reservation'));
+        return redirect()->back();
     }
 }

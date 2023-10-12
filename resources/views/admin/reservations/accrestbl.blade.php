@@ -17,14 +17,13 @@
                                     <th>Date </th>
                                     <th>Time </th>
                                     <th>Message </th>
-                                    <th>Accept </th>
                                     <th>Delete </th>
 
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $value)
+                                @foreach ($reservation as $value)
                                     <tr>
                                         <td>{{ $value->id }}</td>
                                         <td>{{ $value->name }}</td>
@@ -35,14 +34,9 @@
                                         <td>{{ $value->time }}</td>
                                         <td>{{ $value->message }}</td>
                                         <td>
-                                            <a href="{{ route('tableres.accept', ['id' => $value->id]) }}"
-                                                class="btn btn-success">Accept</a>
-                                        </td>
-                                        <td>
                                             <a href="{{ route('tbres.del', ['id' => $value->id]) }}"
                                                 class="btn btn-danger">Delete</a>
                                         </td>
-
                                     </tr>
                                 @endforeach
 

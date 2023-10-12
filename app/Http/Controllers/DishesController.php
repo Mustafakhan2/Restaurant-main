@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Chefs;
 use App\Models\Dishes;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,7 @@ class DishesController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'recipe' => 'required',
             'description' => 'required',
+            'price' => 'required|integer|min:0|max:1000'
 
         ]);
         $imageName = time() . 'dish' . $request->image->getClientOriginalExtension();
@@ -47,6 +49,7 @@ class DishesController extends Controller
         $data->image = $imageName;
         $data->recipe = $request["recipe"];
         $data->description = $request["description"];
+        $data->price = $request["price"];
         $data->category = $request['selected_option'];
         $data->save();
         return redirect()->back();
@@ -94,5 +97,11 @@ class DishesController extends Controller
         $deluser = Dishes::find($id);
         $deluser->delete();
         return redirect()->route('dishes.show');
+    }
+    public function showDishes()
+    {
+        $dishes = Dishes::all();
+        $chefs = Chefs::all();
+        return view('home', compact('dishes', 'chefs'));
     }
 }

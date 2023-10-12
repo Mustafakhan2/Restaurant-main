@@ -14,6 +14,7 @@
                                     <th>Image</th>
                                     <th>Recipe</th>
                                     <th>Description</th>
+                                    <th>Price</th>
                                     <th>Category</th>
                                     <th>Created At</th>
                                     <th>Delete</th>
@@ -28,6 +29,7 @@
                                         <td><img src="{{ asset('uploads/' . $value->image) }}" alt="Image"></td>
                                         <td>{{ $value->recipe }}</td>
                                         <td>{{ $value->description }}</td>
+                                        <td>{{ $value->price }}</td>
                                         <td>
                                             {{-- Find the associated category for the dish --}}
                                             @php

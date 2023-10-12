@@ -44,7 +44,13 @@ Route::get('/categorytable/{id}', [CategoryController::class, 'edit'])->name('ca
 Route::post('/categorytable/{id}', [CategoryController::class, 'update']);
 Route::post('', [TableRes::class, 'store'])->name('tbres.store');
 Route::get('/restable', [TableRes::class, "show"])->name('tbres.show');
-Route::get('/restable/{id}', [TableRes::class, "destroy"])->name('tbres.del');
+Route::get('/restable/{id}', [TableRes::class, "destroy"])->name('tbres.del');;
+Route::get('/acceptres/{id}', [TableRes::class, 'accept'])->name('tableres.accept');
+Route::get('/reserved', [TableRes::class, 'showres'])->name('tableres.showres');
+Route::get('/', [DishesController::class, 'showDishes']);
+
+
+
 
 
 

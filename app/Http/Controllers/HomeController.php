@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chefs;
+use App\Models\Dishes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,21 +20,23 @@ class HomeController extends Controller
         if ($usertype == "1") {
             return view('admin.admindashboard');
         } else {
-            return view('home');
+            $dishes = Dishes::all();
+            $chefs = Chefs::all();
+            return view('home', compact('dishes', 'chefs'));
         }
     }
 
     public  function  userindex()
     {
-        $users = User::where('usertype',"0")->get();
+        $users = User::where('usertype', "0")->get();
         $data = compact('users');
         return view('admin.users.user')->with($data);
     }
-    
+
     public function userdelete($id)
     {
-    $del = User::find($id);
-   $del->delete();
-   return redirect()->back();
+        $del = User::find($id);
+        $del->delete();
+        return redirect()->back();
     }
 }

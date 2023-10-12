@@ -49,6 +49,16 @@
                             </p>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputPassword1">Price</label>
+                            <input type="number" class="form-control" id="price" placeholder="Price for the dish"
+                                name="price">
+                            <p class="text-danger">
+                                @error('price')
+                                    {{ $message }}
+                                @enderror
+                            </p>
+                        </div>
+                        <div class="form-group">
                             <div class="mb-3">
                                 <label for="bootstrapDropdown" class="form-label">Select an Option:</label>
                                 <select class="form-select" id="bootstrapDropdown" name="selected_option">

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('dishes', function (Blueprint $table) {
-            $table->string('category');
+        Schema::table('_table__reservation', function (Blueprint $table) {
+            $table->string("status")->default('pending');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('dishes', function (Blueprint $table) {
+        Schema::table('_table__reservation', function (Blueprint $table) {
             //
         });
     }
