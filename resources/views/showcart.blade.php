@@ -129,11 +129,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                             <h1 class="text-5xl">Shopping Cart</h1>
                                             <p class="mb-0">You have {{ $count }} items in your cart</p>
                                         </div>
-                                        <div>
-                                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                                                    class="text-body">price <i class="fas fa-angle-down mt-1"></i></a>
-                                            </p>
-                                        </div>
+                                        
                                     </div>
                                     @foreach ($cart as $carts)
                                         <div class="card mb-3">
@@ -169,7 +165,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
 
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-5 mt-28">
 
                                     <div class="card bg-primary text-white rounded-3">
                                         <div class="card-body">
