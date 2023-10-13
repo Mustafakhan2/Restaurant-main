@@ -101,7 +101,7 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
-                <span class="menu-title">Reservations</span>
+                <span class="menu-title">Accepted Reservation</span>
             </a>
         </li>
 

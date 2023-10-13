@@ -10,4 +10,5 @@ class Dishes extends Model
     use HasFactory;
     protected $table = "dishes";
     protected $primaryKey = "id";
+    
 }

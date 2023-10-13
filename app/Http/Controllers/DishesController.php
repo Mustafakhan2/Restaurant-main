@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Chefs;
 use App\Models\Dishes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DishesController extends Controller
 {
@@ -102,6 +104,46 @@ class DishesController extends Controller
     {
         $dishes = Dishes::all();
         $chefs = Chefs::all();
-        return view('home', compact('dishes', 'chefs'));
+        $category = Category::all();
+        if (auth()->check()) {
+            $user = Auth()->user();
+            $count = Cart::where('email', $user->email)->count();
+            return view('home', compact('count', 'dishes', 'chefs', 'category'));
+        }
+        return view('home', compact('dishes', 'chefs', 'category'));
+    }
+
+    public function addcart(Request $request,  $id)
+    {
+        if (Auth::id()) {
+            $user = Auth()->user();
+            $product = Dishes::find($id);
+            $cart = new Cart();
+            $cart->name = $user->name;
+            $cart->email = $user->email;
+            $cart->dish_name = $product->name;
+            $cart->price = $product->price;
+            $cart->image = $product->image;
+            $cart->quantity = $request->quantity;
+
+            $cart->save();
+            return redirect()->back();
+        } else {
+            return redirect('login');
+        }
+    }
+    public function showCart()
+    {
+
+        $user = Auth()->user();
+        $cart = Cart::where('email', $user->email)->get();
+        $count = Cart::where('email', $user->email)->count();
+        return view('showcart', compact('count', 'cart'));
+    }
+    public function delcart($id)
+    {
+        $data = Cart::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

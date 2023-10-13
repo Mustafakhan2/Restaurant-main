@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Chefs;
 use App\Models\Dishes;
 use App\Models\User;
@@ -12,6 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         return view('home');
     }
     public function redirect()
@@ -22,7 +25,10 @@ class HomeController extends Controller
         } else {
             $dishes = Dishes::all();
             $chefs = Chefs::all();
-            return view('home', compact('dishes', 'chefs'));
+            $category = Category::all();
+            $user = Auth()->user();
+            $count = Cart::where('email', $user->email)->count();
+            return view('home', compact('dishes', 'chefs', 'category', 'count'));
         }
     }
 
